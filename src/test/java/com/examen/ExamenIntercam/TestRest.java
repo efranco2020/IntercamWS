@@ -20,12 +20,6 @@ import com.examen.ExamenIntercam.model.Usuarios;
 
 @SpringBootTest
 class TestRest {
-
-//	@Test
-//	void test() {
-//		fail("Not yet implemented");
-//	}
-	
 	
 	@Test
 	public void guardarCliente() throws Exception {
