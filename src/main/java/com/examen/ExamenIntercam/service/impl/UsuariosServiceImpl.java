@@ -2,9 +2,7 @@ package com.examen.ExamenIntercam.service.impl;
 
 import java.util.List;
 
-import javax.persistence.RollbackException;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,24 +25,6 @@ public class UsuariosServiceImpl implements UsuariosService {
 			usuarioRepositorio.save(usuarios);
 			salida.setResultado(true);
 			return salida;
-//		} catch (ConstraintViolationException | org.hibernate.exception.ConstraintViolationException e) {
-//			salida.setResultado(false);
-//			salida.setMensaje(e.getLocalizedMessage());
-//			return salida;
-//		} catch (RollbackException e) {
-//			
-//			if(e.getCause() instanceof ConstraintViolationException) {
-//				
-//				ConstraintViolationException exce = (ConstraintViolationException) e.getCause();
-//				salida.setResultado(false);
-//				salida.setMensaje("Valid: "+exce.getConstraintViolations().stream().findFirst().toString());
-//				return salida;	
-//				
-//			}else {
-//				salida.setResultado(false);
-//				salida.setMensaje(e.getCause().getMessage());
-//				return salida;	
-//			}
 		}  catch (Exception e) {
 			e.printStackTrace();
 			salida.setResultado(false);
@@ -94,7 +74,6 @@ public class UsuariosServiceImpl implements UsuariosService {
 		try {
 			
 			ResponseGeneric resp = findById(id);
-			@SuppressWarnings("unchecked")
 			Usuarios user = (Usuarios) resp.getResultado();
 			if(user != null ) {
 				usuarioRepositorio.delete(user);
@@ -117,7 +96,6 @@ public class UsuariosServiceImpl implements UsuariosService {
 		ResponseGeneric salida = new ResponseGeneric();
 		try {
 			ResponseGeneric resp = findById(id);
-			@SuppressWarnings("unchecked")
 			Usuarios lista = (Usuarios) resp.getResultado();
 			if(lista != null ) {
 				usuarios.setId(id);
